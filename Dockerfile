@@ -21,6 +21,9 @@ RUN apt-get update && \
         gnupg \
         apt-transport-https \
         locales \
+        language-pack-en-base \
+        gh \
+        jq \
     && rm -rf /var/lib/apt/lists/*
 
 # Install wrangler (Cloudflare Workers CLI)

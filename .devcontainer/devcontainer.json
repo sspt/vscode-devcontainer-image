@@ -1,0 +1,34 @@
+{
+    "name": "Cloudflare Dev Container",
+    "image": "ghcr.io/sspt/devcontainer:latest",
+    "workspaceFolder": "/app",
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "postCreateCommand": "sudo chmod 777 /var/run/docker.sock && sudo chown -R ubuntu:ubuntu /app",
+    "remoteUser": "ubuntu",
+    "features": {},
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-azuretools.vscode-containers",
+                "github.copilot",
+                "cloudflare.cloudflare-workers-bindings-extension"
+            ],
+            "settings": {
+                "cloudflare.wranglerPath": "/usr/local/bin/wrangler"
+            }
+        }
+    },
+    "remoteEnv": {
+        "CF_API_TOKEN": "${localEnv:CF_API_TOKEN}",
+        "CF_ACCOUNT_ID": "${localEnv:CF_ACCOUNT_ID}"
+    },
+    "mounts": [
+        "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/ubuntu/.ssh,type=bind,consistency=cached",
+        "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gnupg,target=/home/ubuntu/.gnupg,type=bind,consistency=cached",
+        "source=${localEnv:HOME}${localEnv:USERPROFILE}/.local,target=/home/ubuntu/.local,type=bind,consistency=cached",
+        "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gitconfig,target=/home/ubuntu/.gitconfig,type=bind,consistency=cached",
+        "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+    ]
+}

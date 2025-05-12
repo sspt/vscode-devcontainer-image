@@ -46,11 +46,22 @@ RUN apt clean all
 # Set the working directory
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Create the app dir
+RUN mkdir -p /app && chown -R ubuntu:ubuntu /app
 
 # Set up a slick Powerline-inspired prompt and some useful aliases
 USER ubuntu
+
+# install nvm
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+
+# set env
+ENV NVM_DIR=/home/ubuntu/.nvm
+
+# install node
+RUN bash -c "source $NVM_DIR/nvm.sh && nvm install 20"
+RUN bash -c "source $NVM_DIR/nvm.sh && npm update -g npm"
+RUN bash -c "source $NVM_DIR/nvm.sh && npm install wrangler --save-dev"
 RUN cp /usr/local/share/oh-my-bash/bashrc ~/.bashrc
 
 RUN echo '\
@@ -62,6 +73,7 @@ alias la="ls -A --color=auto"\n\
 alias l="ls -CF --color=auto"\n\
 alias gs="git status"\n\
 alias gd="git diff"\n\
+source $NVM_DIR/nvm.sh\n\
 ' >> /home/ubuntu/.bashrc
 
 # Default command (adjust as needed)

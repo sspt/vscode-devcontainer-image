@@ -21,8 +21,7 @@
         }
     },
     "remoteEnv": {
-        "CF_API_TOKEN": "${localEnv:CF_API_TOKEN}",
-        "CF_ACCOUNT_ID": "${localEnv:CF_ACCOUNT_ID}"
+        "CLOUDFLARE_API_TOKEN": "${localEnv:CLOUDFLARE_API_TOKEN}"
     },
     "mounts": [
         "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/ubuntu/.ssh,type=bind,consistency=cached",

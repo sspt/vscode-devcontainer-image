@@ -22,4 +22,4 @@ Welcome to your **Cloudflare Workers Development Container**! This environment i
    Use [Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers) to open this folder in a containerized environment.
 
 2. **Authenticate Wrangler**  
-   Set the local vars CF_API_TOKEN and CF_ACCOUNT_ID
+   Set the local vars CLOUDFLARE_API_TOKEN

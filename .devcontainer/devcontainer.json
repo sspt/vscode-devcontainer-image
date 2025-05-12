@@ -26,6 +26,7 @@
     },
     "mounts": [
         "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/ubuntu/.ssh,type=bind,consistency=cached",
+        "source=${localEnv:HOME}${localEnv:USERPROFILE}/.docker,target=/home/ubuntu/.docker,type=bind,consistency=cached",
         "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gnupg,target=/home/ubuntu/.gnupg,type=bind,consistency=cached",
         "source=${localEnv:HOME}${localEnv:USERPROFILE}/.local,target=/home/ubuntu/.local,type=bind,consistency=cached",
         "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gitconfig,target=/home/ubuntu/.gitconfig,type=bind,consistency=cached",

@@ -80,14 +80,14 @@ alias gd="git diff"\n\
 source $NVM_DIR/nvm.sh\n\
 ' >> /home/ubuntu/.bashrc
 
-# Default command (adjust as needed)
-CMD ["bash"]
-
 # Additional Tools - Azure CLI
 RUN pip install azure-cli --break-system-packages --no-cache-dir
 
 # Additional Tools - DockerInDocker
+USER root
 RUN curl -sSL https://raw.githubusercontent.com/devcontainers/features/refs/heads/main/src/docker-in-docker/install.sh | bash
+USER ubuntu
+
 
 # Additional Tools - TofuEnv
 RUN curl -Lo /tmp/tofuenv.tar.gz "https://github.com/tofuutils/tofuenv/archive/refs/tags/v${TOFUENV_VERSION}.tar.gz" \
@@ -118,3 +118,6 @@ RUN (type -p curl >/dev/null || (apt update && apt-get install curl -y)) \
     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
     && apt update \
     && apt install gh -y
+
+# Default command (adjust as needed)
+CMD ["bash"]

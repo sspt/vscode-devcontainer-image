@@ -1,6 +1,6 @@
 {
     "name": "Cloudflare Dev Container",
-    "image": "ghcr.io/sspt/devcontainer-for-cf-workers:latest",
+    "image": "ghcr.io/sspt/vscode-devcontainer-image:latest",
     "workspaceFolder": "/app",
     "settings": {
         "terminal.integrated.shell.linux": "/bin/bash"

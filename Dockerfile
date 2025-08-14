@@ -99,14 +99,15 @@ RUN curl -Lo /tmp/tofuenv.tar.gz "https://github.com/tofuutils/tofuenv/archive/r
     && mkdir -p /usr/local/share/licenses \
     && mv "/tmp/tofuenv-${TOFUENV_VERSION}/LICENSE" /usr/local/share/licenses/tofuenv \
     && rm -rf /tmp/tofuenv* \
-    && export TOFUENV_ROOT=/usr/local/lib/tofuenv
+    && export TOFUENV_ROOT=/usr/local/lib/tofuenv \
+    && export TOFUENV_CONFIG_DIR=/opt/tofuenv/ \
+    && export TOFUENV_TOFU_VERSION=latest
 
 # Additional Tools - SOPS
 RUN curl -LO https://github.com/getsops/sops/releases/download/v$"SOPS_VERSION"/sops-v${SOPS_VERSION}.linux.amd64 && \
 	mv sops-v$"SOPS_VERSION".linux.amd64 /usr/local/bin/sops && \
 	chmod +x /usr/local/bin/sops
-    && export TOFUENV_CONFIG_DIR=/opt/tofuenv/ \
-    && export TOFUENV_TOFU_VERSION=latest
+
 
 # Install GH CLI
 RUN (type -p curl >/dev/null || (apt update && apt-get install curl -y)) \

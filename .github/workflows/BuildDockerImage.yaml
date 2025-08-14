@@ -30,6 +30,6 @@ jobs:
       - name: Build and push Docker image
         run: |
           VERSION="${GITHUB_REF#refs/tags/}"
-          docker build -t ghcr.io/sspt/devcontainer-for-cf-workers:${VERSION} -t ghcr.io/sspt/devcontainer-for-cf-workers:latest .
-          docker push ghcr.io/sspt/devcontainer-for-cf-workers:${VERSION}
-          docker push ghcr.io/sspt/devcontainer-for-cf-workers:latest
+          docker build -t ghcr.io/sspt/devcontainer-for-cf-workers:${VERSION} -t ghcr.io/sspt/vscode-devcontainer-image:latest .
+          docker push ghcr.io/sspt/vscode-devcontainer-image:${VERSION}
+          docker push ghcr.io/sspt/vscode-devcontainer-image:latest
